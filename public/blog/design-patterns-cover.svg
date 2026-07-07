@@ -1,0 +1,8 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="40" fill="#0F172A"/>
+  <circle cx="180" cy="120" r="220" fill="#2563EB" fill-opacity=".28"/>
+  <circle cx="1050" cy="550" r="260" fill="#06B6D4" fill-opacity=".22"/>
+  <rect x="104" y="105" width="992" height="420" rx="32" fill="white" fill-opacity=".07" stroke="white" stroke-opacity=".16"/>
+  <text x="600" y="280" fill="white" font-size="64" font-family="Arial" text-anchor="middle" font-weight="700">Creational Design Patterns</text>
+  <text x="600" y="365" fill="#93C5FD" font-size="34" font-family="Arial" text-anchor="middle">Singleton • Builder • Factory • Prototype</text>
+</svg>

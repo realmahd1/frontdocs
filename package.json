@@ -1,0 +1,36 @@
+{
+  "name": "telegram-md-nextjs-blog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "telegram:webhook": "node --env-file=.env.local scripts/set-telegram-webhook.mjs",
+    "telegram:poll": "node --env-file=.env.local --import tsx scripts/telegram-polling.ts",
+    "telegram:poll:reset": "node -e \"require('fs').rmSync('storage/telegram-polling-offset.txt', { force: true }); console.log('Polling offset reset.')\"",
+    "covers:regenerate": "node --import tsx scripts/regenerate-covers.ts"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.0.0",
+    "rehype-highlight": "^7.0.0",
+    "remark-gfm": "^4.0.0",
+    "satori": "^0.26.0",
+    "sharp": "^0.35.3",
+    "vazirmatn": "^33.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.0.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,20 +1,23 @@
 import path from "node:path";
 
-function resolveFromProject(value: string | undefined, fallback: string) {
-  return path.resolve(
-    /* turbopackIgnore: true */ process.cwd(),
-    value?.trim() || fallback
-  );
-}
+const root = process.cwd();
 
 export const blogPaths = {
-  posts: resolveFromProject(process.env.BLOG_POSTS_DIR, "content/posts"),
-  fragments: resolveFromProject(
-    process.env.TELEGRAM_FRAGMENTS_DIR,
-    "content/telegram"
+  posts: path.join(
+    root,
+    "content",
+    "posts"
   ),
-  generated: resolveFromProject(
-    process.env.BLOG_GENERATED_DIR,
-    "storage/generated"
+
+  fragments: path.join(
+    root,
+    "content",
+    "telegram"
+  ),
+
+  generated: path.join(
+    root,
+    "public",
+    "generated"
   ),
 };

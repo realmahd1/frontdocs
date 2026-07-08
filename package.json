@@ -10,7 +10,8 @@
     "telegram:webhook": "node --env-file=.env.local scripts/set-telegram-webhook.mjs",
     "telegram:poll": "node --env-file=.env.local --import tsx scripts/telegram-polling.ts",
     "telegram:poll:reset": "node -e \"require('fs').rmSync('storage/telegram-polling-offset.txt', { force: true }); console.log('Polling offset reset.')\"",
-    "covers:regenerate": "node --import tsx scripts/regenerate-covers.ts"
+    "covers:regenerate": "node --import tsx scripts/regenerate-covers.ts",
+    "markdown:normalize": "tsx scripts/normalize-generated-markdown.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

@@ -5,11 +5,12 @@ description: >-
   مثلاً چون تازه با Strategy آشنا شده‌ایم، سعی می‌کنیم هر if/else ای را با آن
   جایگزین کنیم. در حالی که…
 date: '2026-07-03T13:50:39.000Z'
-updatedAt: '2026-07-07T09:15:29.000Z'
+updatedAt: '2026-07-08T17:38:39.000Z'
 author: M.Mahdi Saeidi
 cover: /generated/covers/design-patterns-cover.svg
 tags:
   - Design_Patterns
+  - Creational_Patterns
 draft: false
 telegramMessageIds:
   - 348
@@ -44,6 +45,32 @@ telegramMessageIds:
   - 380
   - 381
   - 382
+  - 383
+  - 384
+  - 385
+  - 386
+  - 387
+  - 388
+  - 389
+  - 390
+  - 391
+  - 392
+  - 393
+  - 394
+  - 395
+  - 396
+  - 397
+  - 398
+  - 399
+  - 400
+  - 401
+  - 402
+  - 403
+  - 404
+  - 405
+  - 406
+  - 407
+  - 408
 ---
 <!-- FRONTDOCS_PART:1 -->
 
@@ -161,7 +188,7 @@ class SmsService {
 
 مثلاً:
 
-```javascript
+```
 new ReportService(
   database,
   logger,
@@ -179,7 +206,7 @@ new ReportService(
 
 مثلاً همه‌جای پروژه مستقیماً به یک API خارجی وابسته شده است:
 
-```javascript
+```
 axios.post(
   "external-api.com/send",
   data
@@ -188,7 +215,7 @@ axios.post(
 
 اینجا یک Adapter می‌تواند ارتباط را ساده کند:
 
-```javascript
+```swift
 externalService.send(data);
 ```
 
@@ -231,7 +258,7 @@ strategy.pay();
 
 مثلاً برای یک محاسبه ساده چنین ساختاری می‌سازیم:
 
-```javascript
+```dart
 class DiscountStrategy {
   calculate(price) {
     return price * 0.9;
@@ -268,9 +295,8 @@ const calculateDiscount =
 این Pattern دقیقاً قرار است کدام مشکل را حل کند؟
 
 اگر جواب روشنی نداریم، احتمالاً هنوز به آن نیاز نداریم.
-
-**پترن یعنی پیچیدگی را در یک نقطه کنترل کنیم؛**
-نه اینکه بدون دلیل، پیچیدگی جدیدی بسازیم.
+**پترن یعنی پیچیدگی را در یک نقطه کنترل کنیم؛
+نه اینکه بدون دلیل، پیچیدگی جدیدی بسازیم.**
 
 ---
 
@@ -333,7 +359,7 @@ Singleton با اینکه ساده به نظر می‌رسد، می‌تواند
 **وابستگی‌ها را پنهان می‌کند**
 وقتی یک کلاس مستقیماً Singleton را صدا می‌زند، از بیرون مشخص نیست که به آن وابسته است.
 
-```javascript
+```dart
 class OrderService {
   save() {
     Logger.instance().info("Order saved");
@@ -363,7 +389,7 @@ class OrderService {
 
 بدون Builder، ساختن آبجکت ممکن است ناخوانا و اشتباه‌پذیر باشد:
 
-```javascript
+```ruby
 request = Request.new(
   url,
   method,
@@ -379,7 +405,7 @@ request = Request.new(
 در این حالت به‌سختی می‌توان فهمید هر مقدار مربوط به کدام پارامتر است و ممکن است ترتیب آن‌ها اشتباه شود.
 با Builder، تنظیمات را مرحله‌به‌مرحله و واضح مشخص می‌کنیم:
 
-```javascript
+```ruby
 request = RequestBuilder.new
   .url("https://api.example.com")
   .method(:post)
@@ -460,7 +486,7 @@ class PdfCreator extends DocumentCreator {
 
 در این حالت، بخش اصلی برنامه مستقیماً این کار را انجام نمی‌دهد:
 
-```javascript
+```
 new WordDocument();
 ```
 
@@ -476,8 +502,8 @@ new PdfDocument();
 const document = creator.createDocument();
 ```
 
-**نکته اصلی:**
-**Factory Method یعنی منطق ساخت آبجکت‌ها را از کد اصلی جدا کنیم و به کلاس‌های مخصوص بسپاریم.**
+**نکته اصلی:
+Factory Method یعنی منطق ساخت آبجکت‌ها را از کد اصلی جدا کنیم و به کلاس‌های مخصوص بسپاریم.**
 
 در نتیجه اگر بعداً بخواهیم `ExcelDocument` اضافه کنیم، فقط یک `ExcelCreator` جدید می‌سازیم و نیازی نیست قسمت‌های مختلف برنامه را تغییر دهیم.
 
@@ -491,7 +517,6 @@ const document = creator.createDocument();
 > MacButton
 >
 > MacCheckbox
-
 برای Windows:
 > WindowsButton
 >
@@ -634,7 +659,7 @@ enemy2.weapon = "axe";
 
 **نکته اصلی**
 
-**Prototype زمانی مناسب است که کپی‌کردن یک آبجکت آماده، ساده‌تر یا سریع‌تر از ساختن دوباره آن از ابتدا باشد.**
+Prototype زمانی مناسب است که کپی‌کردن یک آبجکت آماده، ساده‌تر یا سریع‌تر از ساختن دوباره آن از ابتدا باشد.
 
 ---
 
@@ -662,7 +687,7 @@ enemy2.weapon = "axe";
 
 بهتر است این تنظیمات فقط یک‌بار خوانده شوند و همه بخش‌های برنامه از همان نمونه مشترک استفاده کنند.
 
-```javascript
+```dart
 class AppConfig {
   static instance;
 
@@ -1063,7 +1088,7 @@ paymentService.pay(order);
 
 **نکته اصلی**
 
-در Abstract Factory یک آبجکت ساخته نمی‌شود؛ بلکه یک مجموعه از آبجکت‌های مرتبط و هماهنگ ساخته می‌شود.
+**در Abstract Factory یک آبجکت ساخته نمی‌شود؛ بلکه یک مجموعه از آبجکت‌های مرتبط و هماهنگ ساخته می‌شود.**
 
 ```
 MellatFactory
@@ -1168,3 +1193,936 @@ report2.data.reportText =
 این الگو زمانی مناسب است که ساخت یا تنظیم اولیه آبجکت پیچیده، زمان‌بر یا پرهزینه باشد.
 
 همچنین باید مراقب باشیم Clone به‌صورت عمیق انجام شود؛ وگرنه ممکن است بخش‌های داخلی مثل `sections` بین چند گزارش مشترک بمانند و تغییر یکی روی بقیه اثر بگذارد.
+---
+<!-- FRONTDOCS_PART:4 -->
+
+**خوب حالا بریم سراغ شاخه دوم: Structural Patterns**
+
+از **Structural Patterns** زمانی استفاده می‌کنیم که کلاس‌ها درست کار می‌کنند، اما ارتباط بین آن‌ها پیچیده یا نامرتب شده است؛ مثلاً:
+
+> یک سرویس خارجی ساختار متفاوتی دارد.
+>
+> برای استفاده از یک سیستم باید چند مرحله پیچیده انجام دهیم.
+>
+> کلاس‌ها بیش از حد به جزئیات یکدیگر وابسته شده‌اند.
+>
+> ترکیب و ارتباط آبجکت‌ها سخت شده است.
+
+---
+
+**قدم اول: آیا دو بخش، رابط‌های متفاوتی دارند؟**
+
+گاهی برنامه ما انتظار دارد یک متد با این شکل وجود داشته باشد:
+
+```javascript
+payment_processor.process(amount, card)
+```
+
+اما شرکت پرداخت یا کتابخانه خارجی متدی با نام و ترتیب پارامترهای متفاوت ارائه می‌دهد:
+
+```javascript
+provider.execute_payment(card_info, transaction_amount)
+```
+
+با اینکه هر دو متد یک کار انجام می‌دهند، رابط آن‌ها با هم سازگار نیست.
+
+**در این حالت از Adapter استفاده می‌کنیم.**
+Adapter مانند یک مترجم بین برنامه ما و سرویس خارجی عمل می‌کند.
+
+```javascript
+class ProviderAdapter
+  def initialize(provider)
+    @provider = provider
+  end
+
+  def process(amount, card)
+    @provider.execute_payment(
+      card.to_provider_format,
+      amount
+    )
+  end
+end
+```
+
+حالا برنامه همچنان با همان رابط مورد انتظار خودش کار می‌کند:
+
+```javascript
+payment_processor.process(amount, card)
+```
+
+اما Adapter در پشت صحنه:
+
+> اطلاعات کارت را به فرمت مورد انتظار شرکت پرداخت تبدیل می‌کند.
+>
+> ترتیب پارامترها را تغییر می‌دهد.
+>
+> متد مناسب سرویس خارجی را صدا می‌زند.
+
+---
+
+در تصویر نیز همین روند دیده می‌شود.
+بنابراین کد اصلی برنامه لازم نیست نام متدها یا ساختار اطلاعات هر شرکت پرداخت را بداند.
+
+**نکته مهم**
+**وظیفه Adapter فقط تبدیل رابط، نام‌ها و شکل داده‌ها است.**
+
+منطق‌هایی مثل این‌ها بهتر است داخل Adapter قرار نگیرند:
+
+> محاسبه تخفیف
+>
+> بررسی موجودی
+>
+> تعیین کارمزد
+>
+> تصمیم‌گیری درباره تأیید یا رد پرداخت
+
+این موارد منطق کسب‌وکار هستند و باید در کلاس جداگانه‌ای قرار بگیرند.
+⁧Adapter زمانی مناسب است که دو بخش کار مشابهی انجام می‌دهند، اما زبان و رابط متفاوتی دارند. Adapter بین آن‌ها قرار می‌گیرد و این تفاوت را ترجمه می‌کند.
+
+![در تصویر نیز همین روند دیده می‌شود.](/generated/media/design-patterns/385-1.jpg)
+
+---
+
+**قدم دوم: آیا استفاده از یک بخش از سیستم بیش از حد پیچیده شده است؟**
+
+گاهی برای انجام یک کار ساده، باید چند مرحله مختلف را با ترتیب درست اجرا کنیم.
+
+مثلاً برای تبدیل یک ویدئو ممکن است لازم باشد:
+
+> فایل ورودی بررسی شود.
+>
+> ویدئو به فرمت جدید تبدیل شود.
+>
+> اطلاعات فایل استخراج شود.
+>
+> فایل خروجی روی سرور آپلود شود.
+>
+> فایل‌های موقت پاک شوند.
+
+اگر کد اصلی برنامه بخواهد همه این مراحل را خودش اجرا کند، هم شلوغ می‌شود و هم ممکن است ترتیب مراحل اشتباه شود.
+
+در این شرایط از **Facade** استفاده می‌کنیم.
+
+---
+
+Facade یک رابط ساده روی یک سیستم پیچیده قرار می‌دهد. در نتیجه Client فقط یک متد را صدا می‌زند:
+
+```javascript
+videoConverter.convert(file, format);
+```
+
+اما Facade در پشت صحنه همه مراحل را با ترتیب درست اجرا می‌کند:
+
+```javascript
+class VideoConverterFacade {
+  convert(file, format) {
+    const videoInfo = probeInput(file);
+
+    const outputFile = transcode(
+      file,
+      format,
+      videoInfo
+    );
+
+    const metadata = extractMetadata(outputFile);
+
+    upload(outputFile, metadata);
+
+    cleanup(file, outputFile);
+  }
+}
+```
+
+---
+
+در تصویر نیز Client فقط این دستور را اجرا می‌کند:
+
+```javascript
+convert(file, format)
+```
+
+سپس `VideoConverterFacade` خودش این مراحل را مدیریت می‌کند:
+
+```
+بررسی فایل ورودی
+      ↓
+تبدیل ویدئو
+      ↓
+استخراج اطلاعات
+      ↓
+آپلود
+      ↓
+پاک‌سازی
+```
+
+**نکته اصلی**
+
+**Facade پیچیدگی داخل سیستم را پنهان می‌کند و یک راه ساده و امن برای استفاده از آن ارائه می‌دهد.**
+
+یعنی به‌جای اینکه Client چند کلاس و چند متد مختلف را با ترتیب درست صدا بزند، فقط با Facade کار می‌کند.
+
+Facade معمولاً منطق اصلی آن بخش‌ها را تغییر نمی‌دهد؛ فقط استفاده از آن‌ها را ساده‌تر می‌کند.
+
+![در تصویر نیز Client فقط این دستور را اجرا می‌کند:](/generated/media/design-patterns/388-1.jpg)
+
+---
+
+**قدم سوم: آیا چند قابلیت اختیاری را می‌خواهیم بدون اینکه کلاس‌های زیادی بسازیم؟**
+
+گاهی یک آبجکت پایه داریم و می‌خواهیم بعضی قابلیت‌ها را به‌صورت اختیاری به آن اضافه کنیم؛ مثلاً:
+
+> ثبت لاگ
+>
+> رمزنگاری
+>
+> فشرده‌سازی
+>
+> کش‌کردن
+
+فرض کن یک `FileStream` ساده داریم که فایل را می‌خواند و می‌نویسد.
+
+حالا ممکن است در یک بخش فقط فشرده‌سازی بخواهیم:
+
+```javascript
+FileStream
++ Compression
+```
+
+در بخش دیگر رمزنگاری و فشرده‌سازی را با هم بخواهیم:
+
+```javascript
+FileStream
++ Compression
++ Encryption
+```
+
+و در جای دیگری علاوه بر این‌ها، ثبت لاگ هم لازم باشد:
+
+```javascript
+FileStream
++ Compression
++ Encryption
++ Logging
+```
+
+اگر برای هر ترکیب یک کلاس جدا بسازیم، تعداد کلاس‌ها خیلی زیاد می‌شود:
+
+```javascript
+EncryptedFileStream
+CompressedFileStream
+LoggedFileStream
+EncryptedCompressedFileStream
+LoggedEncryptedCompressedFileStream
+...
+```
+
+در این شرایط از **Decorator** استفاده می‌کنیم.
+
+---
+
+Decorator مانند یک لایه دور آبجکت اصلی قرار می‌گیرد و یک قابلیت جدید به آن اضافه می‌کند، بدون اینکه کلاس اصلی را تغییر دهیم.
+
+در تصویر، آبجکت اصلی این است:
+
+```
+FileStream
+```
+
+سپس چند Decorator دور آن قرار گرفته‌اند:
+
+```
+LoggingDecorator
+    ↓
+EncryptionDecorator
+    ↓
+CompressionDecorator
+    ↓
+FileStream
+```
+
+هر لایه وظیفه خودش را انجام می‌دهد:
+
+`CompressionDecorator` داده را فشرده یا از حالت فشرده خارج می‌کند.
+`EncryptionDecorator` داده را رمزنگاری یا رمزگشایی می‌کند.
+`LoggingDecorator` عملیات خواندن و نوشتن را ثبت می‌کند.
+
+![Decorator مانند یک لایه دور آبجکت اصلی قرار می‌گیرد و یک قابلیت جدید به آن اضافه می‌کند، بدون اینکه کلاس اصلی را تغییر د](/generated/media/design-patterns/390-1.jpg)
+
+---
+
+مثال ساده
+
+```javascript
+let stream = new FileStream("report.txt");
+
+stream = new CompressionDecorator(stream);
+stream = new EncryptionDecorator(stream);
+stream = new LoggingDecorator(stream);
+
+stream.write(data);
+```
+
+وقتی `write()` اجرا شود، درخواست از لایه‌ها عبور می‌کند:
+
+```
+Logging
+   ↓
+Encryption
+   ↓
+Compression
+   ↓
+FileStream
+```
+
+یعنی ابتدا عملیات ثبت می‌شود، سپس داده رمزنگاری و فشرده می‌شود و در نهایت داخل فایل نوشته می‌شود.
+
+**مزیت اصلی**
+
+با Decorator می‌توانیم قابلیت‌ها را آزادانه ترکیب کنیم:
+
+```javascript
+const simpleStream =
+  new FileStream("file.txt");
+
+const compressedStream =
+  new CompressionDecorator(simpleStream);
+
+const secureStream =
+  new EncryptionDecorator(
+    new CompressionDecorator(simpleStream)
+  );
+```
+
+بدون اینکه برای هر ترکیب، کلاس جدیدی بسازیم.
+
+---
+
+**نکته مهم**
+
+هر Decorator بهتر است:
+
+> کوچک باشد.
+>
+> فقط یک وظیفه مشخص داشته باشد.
+>
+> همان Interface آبجکت اصلی را حفظ کند.
+>
+> به ترتیب و جزئیات Decoratorهای دیگر وابسته نباشد.
+
+چون اگر لایه‌ها بیش از حد به هم وابسته شوند، فهمیدن ترتیب اجرا و نتیجه نهایی سخت می‌شود.
+
+Decorator زمانی مناسب است که بخواهیم قابلیت‌هایی را به‌صورت اختیاری و ترکیبی به یک آبجکت اضافه کنیم، بدون اینکه کلاس اصلی را تغییر دهیم یا تعداد زیادی کلاس فرزند بسازیم.
+
+---
+
+**قدم چهارم: آیا به یک آبجکت واسط نیاز داریم؟**
+
+گاهی نمی‌خواهیم Client مستقیماً با آبجکت اصلی کار کند. در این حالت یک آبجکت واسط به نام **Proxy** بین آن‌ها قرار می‌دهیم.
+
+Proxy از بیرون شبیه آبجکت اصلی است، اما قبل از دسترسی به آن می‌تواند کارهای دیگری انجام دهد؛ مثل:
+
+> Lazy Loading
+>
+> ذخیره نتیجه در Cache
+>
+> بررسی سطح دسترسی
+>
+> ثبت لاگ
+>
+> ارتباط با یک سرویس از راه دور
+
+---
+
+**مثال تصویر: بارگذاری تصویر**
+
+فرض کن `RealImage` یک تصویر بزرگ را از دیسک یا اینترنت بارگذاری می‌کند. اگر تصویر را همان ابتدای کار بارگذاری کنیم، ممکن است بی‌دلیل زمان و حافظه مصرف شود.
+
+به همین دلیل Client به‌جای `RealImage` با `ImageProxy` کار می‌کند:
+
+```javascript
+const image = new ImageProxy("large-image.jpg");
+
+image.display();
+```
+
+روند کار:
+
+1. Client متد `display()` را روی Proxy اجرا می‌کند.
+2. Proxy بررسی می‌کند که تصویر اصلی قبلاً بارگذاری شده است یا نه.
+3. اگر بارگذاری نشده باشد، یک `RealImage` می‌سازد.
+4. سپس متد `display()` تصویر اصلی را اجرا می‌کند.
+5. در دفعات بعدی از همان تصویر موجود استفاده می‌شود.
+
+![مثال تصویر: بارگذاری تصویر](/generated/media/design-patterns/394-1.jpg)
+
+---
+
+```javascript
+class ImageProxy {
+  constructor(path) {
+    this.path = path;
+    this.realImage = null;
+  }
+
+  display() {
+    if (!this.realImage) {
+      this.realImage = new RealImage(this.path);
+    }
+
+    this.realImage.display();
+  }
+}
+```
+
+کلاس اصلی:
+
+```javascript
+class RealImage {
+  constructor(path) {
+    this.path = path;
+    this.load();
+  }
+
+  load() {
+    console.log("تصویر در حال بارگذاری است...");
+  }
+
+  display() {
+    console.log("تصویر نمایش داده شد");
+  }
+}
+```
+
+**چرا مستقیم از RealImage استفاده نکنیم؟**
+
+اگر مستقیم این کار را انجام دهیم:
+
+```javascript
+const image = new RealImage("large-image.jpg");
+```
+
+تصویر همان لحظه بارگذاری می‌شود، حتی اگر هیچ‌وقت نمایش داده نشود.
+
+اما Proxy بارگذاری را تا زمانی که واقعاً لازم باشد عقب می‌اندازد.
+
+---
+
+**یک مثال دیگر: کنترل دسترسی**
+
+Proxy می‌تواند قبل از اجرای عملیات، دسترسی کاربر را بررسی کند:
+
+```javascript
+class ReportProxy {
+  constructor(user, reportService) {
+    this.user = user;
+    this.reportService = reportService;
+  }
+
+  viewReport(reportId) {
+    if (!this.user.canViewReports) {
+      throw new Error("شما اجازه مشاهده گزارش را ندارید");
+    }
+
+    return this.reportService.viewReport(reportId);
+  }
+}
+```
+
+در اینجا Client فکر می‌کند با سرویس گزارش کار می‌کند، اما Proxy ابتدا مجوز کاربر را بررسی می‌کند.
+**نکته اصلی**
+
+**Proxy جانشین موقت آبجکت اصلی می‌شود و دسترسی به آن را کنترل می‌کند.**
+
+ساختار ساده آن:
+
+```
+Client
+   ↓
+Proxy
+   ↓
+Real Object
+```
+
+تفاوت اصلی Proxy با Decorator این است که:
+
+> **Decorator** قابلیت جدیدی به آبجکت اضافه می‌کند.
+>
+> **Proxy** دسترسی به آبجکت را مدیریت یا کنترل می‌کند.
+
+---
+
+**قدم پنجم: آیا ساختار درختی داریم و می‌خواهیم همه اجزا یکسان مدیریت شوند؟**
+
+گاهی داده‌های برنامه به‌صورت درختی هستند؛ یعنی بعضی آبجکت‌ها می‌توانند آبجکت‌های دیگری را داخل خودشان نگه دارند.
+
+مثلاً در سیستم فایل:
+
+> فایل، یک عضو ساده است.
+>
+> پوشه، می‌تواند شامل فایل و پوشه‌های دیگر باشد.
+
+---
+
+در تصویر، پوشه `root` شامل این موارد است:
+
+```
+root
+├── a.txt
+├── pictures
+│   ├── img1.png
+│   └── img2.png
+└── docs
+    └── spec.pdf
+```
+
+اینجا فایل‌ها و پوشه‌ها با هم تفاوت دارند:
+
+> فایل زیرمجموعه‌ای ندارد.
+>
+> پوشه می‌تواند چند فایل یا پوشه دیگر داشته باشد.
+
+اما می‌خواهیم Client بتواند با هر دو به یک شکل کار کند؛ مثلاً روی فایل یا پوشه، متد `operation()` را اجرا کند.
+
+در این شرایط از **Composite** استفاده می‌کنیم.
+
+![در تصویر، پوشه root شامل این موارد است:](/generated/media/design-patterns/398-1.jpg)
+
+---
+
+**ساختار اصلی**
+
+هم فایل و هم پوشه یک Interface مشترک دارند:
+
+```javascript
+class FileSystemItem {
+  operation() {
+    throw new Error("Not implemented");
+  }
+}
+```
+
+کلاس فایل:
+
+```javascript
+class File extends FileSystemItem {
+  constructor(name) {
+    super();
+    this.name = name;
+  }
+
+  operation() {
+    console.log(`انجام عملیات روی فایل ${this.name}`);
+  }
+}
+```
+
+کلاس پوشه:
+
+```javascript
+class Folder extends FileSystemItem {
+  constructor(name) {
+    super();
+    this.name = name;
+    this.children = [];
+  }
+
+  add(item) {
+    this.children.push(item);
+  }
+
+  operation() {
+    console.log(`انجام عملیات روی پوشه ${this.name}`);
+
+    for (const item of this.children) {
+      item.operation();
+    }
+  }
+}
+```
+
+حالا ساختار تصویر را می‌سازیم:
+
+```javascript
+const root = new Folder("root");
+
+const pictures = new Folder("pictures");
+pictures.add(new File("img1.png"));
+pictures.add(new File("img2.png"));
+
+const docs = new Folder("docs");
+docs.add(new File("spec.pdf"));
+
+root.add(new File("a.txt"));
+root.add(pictures);
+root.add(docs);
+```
+
+Client فقط این دستور را اجرا می‌کند:
+
+```javascript
+root.operation();
+```
+
+پوشه `root` عملیات را روی تمام فایل‌ها و پوشه‌های داخلی اجرا می‌کند.
+
+---
+
+**نکته اصلی**
+
+در الگوی Composite، آبجکت ساده و آبجکت گروهی از یک رابط مشترک استفاده می‌کنند:
+
+```
+File   ──┐
+         ├── operation()
+Folder ──┘
+```
+
+به همین دلیل Client لازم نیست برای فایل و پوشه کد جداگانه بنویسد.
+
+**مثال‌های دیگر**
+
+Composite فقط برای فایل و پوشه نیست. در این موارد هم کاربرد دارد:
+
+> منو و زیرمنو
+>
+> دسته‌بندی محصولات
+>
+> کامپوننت‌های تو‌در‌توی رابط کاربری
+>
+> ساختار سازمانی شرکت
+>
+> فصل، بخش و پاراگراف یک سند
+>
+> کامنت و پاسخ‌های تو‌در‌تو
+
+Composite زمانی مناسب است که ساختار درختی داریم و می‌خواهیم یک عضو ساده و یک مجموعه از اعضا را به یک شکل مدیریت کنیم.
+
+---
+
+**قدم ششم: آیا تعداد زیادی آبجکت، اطلاعات تکراری را نگه می‌دارند؟**
+
+گاهی برنامه تعداد بسیار زیادی آبجکت می‌سازد و هرکدام بخشی از اطلاعات یکسان را داخل خود نگه می‌دارند. این تکرار می‌تواند حافظه زیادی مصرف کند.
+
+در این شرایط از **Flyweight** استفاده می‌کنیم.
+
+---
+
+**مثال واقعی: ویرایشگر متن**
+
+فرض کن یک ویرایشگر، برای هر حرف یک آبجکت می‌سازد:
+
+```
+حرف A:
+فونت Arial
+اندازه 14
+رنگ مشکی
+موقعیت 10
+
+حرف B:
+فونت Arial
+اندازه 14
+رنگ مشکی
+موقعیت 11
+```
+
+فونت، اندازه و رنگ در هر دو حرف یکسان هستند. اگر یک سند یک‌میلیون حرف داشته باشد، ذخیره دوباره این اطلاعات برای هر حرف حافظه زیادی مصرف می‌کند.
+
+در Flyweight، اطلاعات مشترک فقط یک‌بار ساخته می‌شوند:
+
+```
+FormatFlyweight:
+Arial + 14 + Black
+```
+
+بعد همه حروفی که همین ظاهر را دارند، از همان آبجکت مشترک استفاده می‌کنند:
+
+```
+Character A ──┐
+Character B ──┼── FormatFlyweight مشترک
+Character C ──┘
+```
+
+اما اطلاعات مخصوص هر حرف، مثل موقعیت آن، جدا باقی می‌ماند.
+
+**دو نوع اطلاعات در Flyweight**
+
+**اطلاعات مشترک یا Intrinsic State:**
+
+> نام فونت
+>
+> اندازه فونت
+>
+> رنگ
+>
+> نوع استایل
+
+این اطلاعات داخل Flyweight نگهداری می‌شوند.
+
+**اطلاعات مخصوص هر آبجکت یا Extrinsic State:**
+
+> موقعیت حرف
+>
+> شماره خط
+>
+> مختصات نمایش
+
+این اطلاعات بیرون از Flyweight باقی می‌مانند.
+
+![مثال واقعی: ویرایشگر متن](/generated/media/design-patterns/402-1.jpg)
+
+---
+
+**مثال ساده**
+
+```javascript
+class TextFormat {
+  constructor(font, size, color) {
+    this.font = font;
+    this.size = size;
+    this.color = color;
+  }
+}
+```
+
+Factory فرمت‌های ساخته‌شده را نگه می‌دارد:
+
+```javascript
+class FormatFactory {
+  constructor() {
+    this.formats = new Map();
+  }
+
+  getFormat(font, size, color) {
+    const key = `${font}-${size}-${color}`;
+
+    if (!this.formats.has(key)) {
+      this.formats.set(
+        key,
+        new TextFormat(font, size, color)
+      );
+    }
+
+    return this.formats.get(key);
+  }
+}
+```
+
+حالا چند حرف می‌توانند از یک فرمت مشترک استفاده کنند:
+
+```javascript
+const factory = new FormatFactory();
+
+const sharedFormat = factory.getFormat(
+  "Arial",
+  14,
+  "black"
+);
+
+const charA = {
+  value: "A",
+  position: 10,
+  format: sharedFormat
+};
+
+const charB = {
+  value: "B",
+  position: 11,
+  format: sharedFormat
+};
+
+console.log(charA.format === charB.format); // true
+```
+
+`charA` و `charB` موقعیت متفاوتی دارند، اما فرمت آن‌ها یک آبجکت مشترک است.
+
+---
+
+**نکته اصلی تصویر بالا**
+
+در تصویر، `FlyweightFactory` با استفاده از یک `formatKey` بررسی می‌کند که فرمت موردنظر قبلاً ساخته شده یا نه.
+
+اگر وجود داشته باشد، همان `FormatFlyweight` قبلی را برمی‌گرداند؛ در نتیجه برای هر حرف یک فرمت جدید ساخته نمی‌شود.
+
+**چه زمانی مناسب است؟**
+Flyweight زمانی مفید است که:
+
+> تعداد آبجکت‌ها بسیار زیاد باشد.
+>
+> بخش زیادی از اطلاعات آن‌ها یکسان باشد.
+>
+> تکرار این اطلاعات حافظه زیادی مصرف کند.
+>
+> اطلاعات مشترک معمولاً تغییر نکنند.
+
+مثلاً در:
+
+> ویرایشگرهای متن
+>
+> موتورهای بازی
+>
+> سیستم‌های نقشه
+>
+> رندر تعداد زیادی آیکون یا شکل
+>
+> مدل‌های بزرگ داخل حافظه
+
+Flyweight یعنی اطلاعات تکراری را از آبجکت‌ها جدا کنیم و فقط یک نمونه مشترک از آن‌ها نگه داریم تا مصرف حافظه کاهش پیدا کند.
+
+---
+
+**قدم هفتم: آیا دو بخش از سیستم باید مستقل از هم تغییر کنند؟**
+
+گاهی یک سیستم از دو بخش جدا تشکیل شده که هرکدام ممکن است مستقل تغییر کنند.
+
+در مثال تصویر، دو بخش داریم:
+> نوع کنترل: BasicRemote یا AdvancedRemote
+>
+> نوع دستگاه: TV یا Radio
+اگر برای هر ترکیب یک کلاس جدا بسازیم، تعداد کلاس‌ها زیاد می‌شود:
+
+```
+BasicTVRemote
+BasicRadioRemote
+AdvancedTVRemote
+AdvancedRadioRemote
+```
+
+اگر بعداً دستگاه جدیدی مثل `Speaker` یا کنترل جدیدی مثل `VoiceRemote` اضافه شود، تعداد ترکیب‌ها باز هم بیشتر می‌شود.
+
+در این شرایط از **Bridge** استفاده می‌کنیم.
+
+![قدم هفتم: آیا دو بخش از سیستم باید مستقل از هم تغییر کنند؟](/generated/media/design-patterns/405-1.jpg)
+
+---
+
+**ایده اصلی Bridge**
+
+کنترل و دستگاه را از هم جدا می‌کنیم و بین آن‌ها یک ارتباط ایجاد می‌کنیم:
+
+```
+RemoteControl
+      ↓
+    Device
+```
+
+کنترل فقط می‌داند که با یک `Device` کار می‌کند و لازم نیست بداند آن دستگاه تلویزیون است یا رادیو.
+**Interface دستگاه**
+
+```javascript
+class Device {
+  turnOn() {
+    throw new Error("Not implemented");
+  }
+
+  turnOff() {
+    throw new Error("Not implemented");
+  }
+}
+```
+
+پیاده‌سازی‌های مختلف دستگاه:
+
+```javascript
+class TV extends Device {
+  turnOn() {
+    console.log("تلویزیون روشن شد");
+  }
+
+  turnOff() {
+    console.log("تلویزیون خاموش شد");
+  }
+}
+
+class Radio extends Device {
+  turnOn() {
+    console.log("رادیو روشن شد");
+  }
+
+  turnOff() {
+    console.log("رادیو خاموش شد");
+  }
+}
+```
+
+کنترل پایه
+
+```javascript
+class BasicRemote {
+  constructor(device) {
+    this.device = device;
+  }
+
+  turnOn() {
+    this.device.turnOn();
+  }
+
+  turnOff() {
+    this.device.turnOff();
+  }
+}
+```
+
+کنترل پیشرفته هم می‌تواند قابلیت‌های بیشتری داشته باشد:
+
+```javascript
+class AdvancedRemote extends BasicRemote {
+  mute() {
+    console.log("صدا قطع شد");
+  }
+}
+```
+
+**استفاده**
+
+کنترل پایه برای تلویزیون:
+
+```javascript
+const tv = new TV();
+const remote = new BasicRemote(tv);
+
+remote.turnOn();
+```
+
+کنترل پیشرفته برای رادیو:
+
+```javascript
+const radio = new Radio();
+const remote = new AdvancedRemote(radio);
+
+remote.turnOn();
+remote.mute();
+```
+
+---
+
+**مزیت اصلی**
+
+حالا نوع کنترل و نوع دستگاه مستقل از هم تغییر می‌کنند.
+
+می‌توانیم بدون تغییر کنترل‌ها، دستگاه جدید اضافه کنیم:
+
+```javascript
+class Speaker extends Device {
+  turnOn() {
+    console.log("اسپیکر روشن شد");
+  }
+}
+```
+
+یا بدون تغییر دستگاه‌ها، کنترل جدید بسازیم:
+
+```javascript
+class VoiceRemote extends BasicRemote {
+  voiceCommand(command) {
+    console.log(`اجرای فرمان: ${command}`);
+  }
+}
+```
+
+Bridge زمانی مناسب است که سیستم دو بخش مستقل و قابل‌تغییر دارد و نمی‌خواهیم برای تمام ترکیب‌های آن‌ها کلاس جداگانه بسازیم. در تصویر، کنترل‌ها یک طرف و دستگاه‌ها طرف دیگر Bridge هستند.
+
+---
+
+خلاصه مطالبی که گفتیم داخل این عکس خلاصه میشه.
+
+![خلاصه مطالبی که گفتیم داخل این عکس خلاصه میشه.](/generated/media/design-patterns/408-1.jpg)
